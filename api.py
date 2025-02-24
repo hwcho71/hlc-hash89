@@ -1,14 +1,14 @@
+import os
 from fastapi import FastAPI
-import hashlib
 
 app = FastAPI()
 
-@app.post("/generate_hash")
-async def generate_hash(data: dict):
-    text = data.get("data", "")
-    if not text:
-        return {"error": "No data provided"}
-    
-    hashed_value = hashlib.sha256(text.encode()).hexdigest()
-    return {"hash": hashed_value}
+@app.get("/")
+def home():
+    return {"message": "API is running!"}
 
+PORT = int(os.environ.get("PORT", 8000))
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=PORT)
