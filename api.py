@@ -5,7 +5,7 @@ app = FastAPI()
 
 @app.get("/")  # Root endpoint to test if API is running
 def home():
-    return {"message": "API is running!"}
+    return {"message": API is running!}
 
 @app.post("/generate_hash")  # Fix this route to ensure it's working
 async def generate_hash(data: dict):
